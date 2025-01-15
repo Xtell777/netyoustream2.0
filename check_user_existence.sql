@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM users WHERE username = 'nome_usuario' OR email = 'email@dominio.com';

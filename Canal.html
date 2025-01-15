@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Canal - Net You Stream</title>
+    <style>
+        /* Estilo geral */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #0f0f0f;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #ff0000;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        /* Container principal */
+        #create-channel-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #create-channel-container h2 {
+            text-align: center;
+            font-size: 22px;
+            color: #c00;
+            margin-bottom: 20px;
+        }
+
+        /* Grupos do formulário */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #0f0f0f;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #c00;
+            box-shadow: 0 0 4px rgba(192, 0, 0, 0.5);
+        }
+
+        /* Botão */
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #c00;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #a00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Net You Stream</h1>
+    </header>
+
+    <div id="create-channel-container">
+        <h2>Criar Canal</h2>
+        <form action="create_channel.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+            </div>
+            <div class="form-group">
+                <label for="channel-name">Nome do Canal (sem @):</label>
+                <input type="text" id="channel-name" name="channel_name" placeholder="Digite o nome do canal" required>
+            </div>
+            <div class="form-group">
+                <label for="channel-description">Descrição do Canal:</label>
+                <textarea id="channel-description" name="channel_description" rows="4" placeholder="Digite a descrição do canal"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="channel-image">Imagem do Canal:</label>
+                <input type="file" id="channel-image" name="channel_image" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <label for="facebook">Facebook:</label>
+                <input type="url" id="facebook" name="facebook" placeholder="Digite o link do seu Facebook">
+            </div>
+            <div class="form-group">
+                <label for="instagram">Instagram:</label>
+                <input type="url" id="instagram" name="instagram" placeholder="Digite o link do seu Instagram">
+            </div>
+            <div class="form-group">
+                <label for="twitter">Twitter (X):</label>
+                <input type="url" id="twitter" name="twitter" placeholder="Digite o link do seu Twitter">
+            </div>
+            <div class="form-group">
+                <label for="spotify">Spotify:</label>
+                <input type="url" id="spotify" name="spotify" placeholder="Digite o link do seu Spotify">
+            </div>
+            <div class="form-group">
+                <label for="soundcloud">SoundCloud:</label>
+                <input type="url" id="soundcloud" name="soundcloud" placeholder="Digite o link do seu SoundCloud">
+            </div>
+            <div class="form-group">
+                <label for="youtube">YouTube:</label>
+                <input type="url" id="youtube" name="youtube" placeholder="Digite o link do seu YouTube">
+            </div>
+            <button type="submit">Criar Canal</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Net You Stream. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,1 @@
+<a href="cache/estatisticas.json" download="estatisticas.json">Baixar Estatísticas</a>

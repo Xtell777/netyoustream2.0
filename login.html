@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net You Stream - Login</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #login-container {
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 5px 0px #ccc;
+            border-radius: 5px;
+        }
+        .login-option {
+            margin-bottom: 20px;
+        }
+        .login-label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .login-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-button {
+            background-color: #cc0000;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .login-button:hover {
+            background-color: #a80000;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #0073e6;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            text-align: center;
+            color: #cc0000;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-container">
+        <h2>Net You Stream - Login</h2>
+        <form id="login-form">
+            <div class="login-option">
+                <label for="username" class="login-label">Nome de Usuário ou E-mail:</label>
+                <input type="text" id="username" class="login-input" placeholder="Digite seu nome de usuário ou e-mail" required>
+            </div>
+            <div class="login-option">
+                <label for="password" class="login-label">Senha:</label>
+                <input type="password" id="password" class="login-input" placeholder="Digite sua senha" required>
+            </div>
+            <div id="error-message" class="error-message"></div>
+            <button type="submit" class="login-button">Entrar</button>
+        </form>
+        <p>Não tem uma conta? <a href="register.html">Registre-se aqui</a></p>
+    </div>
+
+    <script>
+        // Função de login
+        async function handleLogin(event) {
+            event.preventDefault();  // Previne o envio do formulário
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.textContent = ""; // Limpa mensagens de erro anteriores
+
+            try {
+                // Realiza a requisição para o backend
+                const response = await fetch("login_api.php", {  // URL do script PHP para autenticação
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ username: username, password: password })
+                });
+
+                const data = await response.json(); // Resposta JSON do servidor
+
+                // Verifica se a autenticação foi bem-sucedida
+                if (response.ok && data.token) {
+                    localStorage.setItem("token", data.token); // Armazena o token no localStorage
+                    localStorage.setItem("username", username); // Armazena o nome de usuário no localStorage
+                    window.location.href = "homepage.html";  // Redireciona para a página inicial
+                } else {
+                    // Exibe a mensagem de erro retornada pelo servidor
+                    errorMessage.textContent = data.message || "Erro ao fazer login.";
+                }
+            } catch (error) {
+                // Erro de conexão com o servidor
+                errorMessage.textContent = "Erro de conexão. Tente novamente.";
+            }
+        }
+
+        // Adiciona o evento de submit ao formulário
+        document.getElementById('login-form').addEventListener('submit', handleLogin);
+    </script>
+</body>
+</html>

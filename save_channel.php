@@ -1,50 +1,48 @@
 <?php
-header('Content-Type: application/json');
-
-// Conexão com o banco de dados
-$host = "localhost";
-$dbname = "u845457687_net_you_stream";
+// Configuração de conexão com o banco de dados
+$servername = "localhost";
 $username = "u845457687_XTELL_777";
 $password = "Tubarao777";
+$dbname = "u845457687_net_you_stream";
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// Criar conexão
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Verifica se os dados foram enviados via POST
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $nome = $_POST['channelName'] ?? '';
-        $descricao = $_POST['channelDescription'] ?? '';
-        $imagem = ''; // O caminho será processado abaixo
-        $usuario_id = 1; // Aqui você pode ajustar para pegar o ID do usuário logado
-
-        // Verifica se uma imagem foi enviada
-        if (isset($_FILES['channelImage']) && $_FILES['channelImage']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = 'uploads/';
-            $imageName = basename($_FILES['channelImage']['name']);
-            $uploadFile = $uploadDir . $imageName;
-
-            if (move_uploaded_file($_FILES['channelImage']['tmp_name'], $uploadFile)) {
-                $imagem = $uploadFile;
-            }
-        }
-
-        // Insere ou atualiza as informações do canal
-        $stmt = $pdo->prepare("INSERT INTO canais (nome, descricao, imagem, usuario_id) 
-                               VALUES (:nome, :descricao, :imagem, :usuario_id)
-                               ON DUPLICATE KEY UPDATE 
-                               nome = VALUES(nome), descricao = VALUES(descricao), imagem = VALUES(imagem)");
-        $stmt->execute([
-            ':nome' => $nome,
-            ':descricao' => $descricao,
-            ':imagem' => $imagem,
-            ':usuario_id' => $usuario_id
-        ]);
-
-        echo json_encode(['status' => 'success', 'message' => 'Dados do canal salvos com sucesso.']);
-    } else {
-        echo json_encode(['status' => 'error', 'message' => 'Método de requisição inválido.']);
-    }
-} catch (PDOException $e) {
-    echo json_encode(['status' => 'error', 'message' => 'Erro ao conectar ao banco de dados: ' . $e->getMessage()]);
+// Verificar conexão
+if ($conn->connect_error) {
+    die("Falha na conexão com o banco de dados: " . $conn->connect_error);
 }
+
+// Receber dados enviados via POST
+$user_id = $_POST['user_id'];
+$name = $_POST['name'];
+$description = $_POST['description'];
+$image_url = $_POST['image_url'];
+$subscribers = $_POST['subscribers'];
+$videos = $_POST['videos'];
+$views = $_POST['views'];
+
+// Inserir ou atualizar dados do canal no banco de dados
+$sql = "INSERT INTO channels (user_id, name, description, image_url, subscribers, videos, views)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        ON DUPLICATE KEY UPDATE 
+        name = VALUES(name), 
+        description = VALUES(description), 
+        image_url = VALUES(image_url), 
+        subscribers = VALUES(subscribers), 
+        videos = VALUES(videos), 
+        views = VALUES(views)";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("isssiii", $user_id, $name, $description, $image_url, $subscribers, $videos, $views);
+
+if ($stmt->execute()) {
+    echo json_encode(['status' => 'success', 'message' => 'Dados salvos com sucesso']);
+} else {
+    echo json_encode(['status' => 'error', 'message' => 'Erro ao salvar dados']);
+}
+
+// Fechar conexão
+$stmt->close();
+$conn->close();
+?>

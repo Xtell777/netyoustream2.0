@@ -1,29 +1,28 @@
 <?php
-// Conexão com o banco de dados
-$conn = new mysqli("localhost", "u845457687_XTELL_777", "Tubarao777", "u845457687_net_you_stream");
+// Verifica se foi enviado um novo comentário
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $author_name = $_POST['author_name'];
+    $comment_text = $_POST['comment_text'];
+    $video_id = 1;  // Alterar para o video_id desejado
 
-if ($conn->connect_error) {
-    http_response_code(500);
-    echo json_encode(["error" => "Erro de conexão com o banco de dados"]);
-    exit();
+    // Inserir comentário no banco de dados
+    $sql = "INSERT INTO comments (video_id, author_name, comment_text) VALUES (:video_id, :author_name, :comment_text)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':video_id', $video_id);
+    $stmt->bindParam(':author_name', $author_name);
+    $stmt->bindParam(':comment_text', $comment_text);
+
+    if ($stmt->execute()) {
+        echo "<p>Comentário adicionado com sucesso!</p>";
+    } else {
+        echo "<p>Erro ao adicionar o comentário.</p>";
+    }
 }
-
-// Obtém os dados do JSON enviado
-$data = json_decode(file_get_contents('php://input'), true);
-$author = $data['author'];
-$text = $data['text'];
-
-$stmt = $conn->prepare("INSERT INTO comments (author, text) VALUES (?, ?)");
-$stmt->bind_param("ss", $author, $text);
-
-if ($stmt->execute()) {
-    // Retorna o novo comentário com ID gerado para exibição no frontend
-    echo json_encode(["id" => $stmt->insert_id, "author" => $author, "text" => $text]);
-} else {
-    http_response_code(500);
-    echo json_encode(["error" => "Erro ao salvar comentário"]);
-}
-
-$stmt->close();
-$conn->close();
 ?>
+
+<!-- Formulário para adicionar comentário -->
+<form method="post">
+    <input type="text" name="author_name" placeholder="Seu nome" required>
+    <textarea name="comment_text" placeholder="Escreva seu comentário" required></textarea>
+    <button type="submit">Adicionar Comentário</button>
+</form>

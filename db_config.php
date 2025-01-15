@@ -1,13 +1,16 @@
 <?php
-$host = 'localhost';  // Host do banco de dados
-$dbname = 'u845457687_net_you_stream';  // Nome do banco de dados
-$username = 'u845457687_XTELL_777';  // Nome de usuário do banco de dados
-$password = 'Tubarao777';  // Senha do banco de dados
+$servername = getenv('DB_SERVER') ?: "localhost"; // Usando variáveis de ambiente para o servidor
+$username = getenv('DB_USERNAME') ?: "u845457687_XTELL_777"; // Usando variáveis de ambiente para o nome de usuário
+$password = getenv('DB_PASSWORD') ?: "Tubarao777"; // Usando variáveis de ambiente para a senha
+$dbname = getenv('DB_NAME') ?: "u845457687_net_you_stream"; // Usando variáveis de ambiente para o nome do banco de dados
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erro de conexão: " . $e->getMessage());
+// Criação da conexão com o banco de dados
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verifica a conexão
+if ($conn->connect_error) {
+    // Em vez de mostrar o erro diretamente, registre-o em um arquivo de log
+    error_log("Falha na conexão com o banco de dados: " . $conn->connect_error);
+    die("Erro na conexão com o banco de dados.");
 }
 ?>

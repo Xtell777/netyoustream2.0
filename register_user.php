@@ -1,32 +1,53 @@
 <?php
-// Configurações do banco de dados
-$host = 'localhost';
-$dbname = 'u845457687_net_you_stream';
-$user = 'u845457687_XTELL_777';
-$pass = 'Tubarao777';
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// Verifica se os dados foram enviados via método POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Verifica se todos os campos obrigatórios foram preenchidos
+    if (isset($_POST["fullname"]) && isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm_password"])) {
+        
+        // Recupera os valores dos campos do formulário
+        $fullname = trim($_POST["fullname"]);
+        $username = trim($_POST["username"]);
+        $email = trim($_POST["email"]);
+        $password = $_POST["password"];
+        $confirm_password = $_POST["confirm_password"];
 
-    $data = json_decode(file_get_contents("php://input"));
+        // Verifica se as senhas coincidem
+        if ($password === $confirm_password) {
+            
+            // Hash da senha antes de armazená-la
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    if(isset($data->username) && isset($data->password)) {
-        $username = $data->username;
-        $password = password_hash($data->password, PASSWORD_BCRYPT); // Hasheamento seguro da senha
+            // Conectar ao banco de dados (substitua com suas próprias configurações)
+            $conn = new mysqli("localhost", "u845457687_XTELL_777", "Tubarao777", "u845457687_net_you_stream");
 
-        // Inserção no banco de dados
-        $sql = "INSERT INTO users (username, password) VALUES (:username, :password)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':password', $password);
-        $stmt->execute();
+            // Verifica se a conexão foi estabelecida com sucesso
+            if ($conn->connect_error) {
+                die("Erro de conexão com o banco de dados: " . $conn->connect_error);
+            }
 
-        echo json_encode(["message" => "Usuário registrado com sucesso!"]);
+            // Prepara a consulta SQL usando prepared statements
+            $stmt = $conn->prepare("INSERT INTO users (fullname, username, email, password) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $fullname, $username, $email, $hashed_password);
+
+            // Executa a consulta SQL
+            if ($stmt->execute()) {
+                echo "Usuário registrado com sucesso!";
+            } else {
+                echo "Erro ao registrar o usuário: " . $stmt->error;
+            }
+
+            // Fecha a consulta e a conexão com o banco de dados
+            $stmt->close();
+            $conn->close();
+        } else {
+            echo "As senhas não coincidem!";
+        }
     } else {
-        echo json_encode(["message" => "Dados incompletos."]);
+        echo "Todos os campos devem ser preenchidos!";
     }
-} catch (PDOException $e) {
-    echo json_encode(["message" => "Erro no servidor: " . $e->getMessage()]);
+} else {
+    echo "Este script só aceita solicitações POST!";
 }
+
 ?>

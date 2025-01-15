@@ -1,48 +1,32 @@
-<?php
-session_start(); // Inicia a sessão
-
-$host = 'localhost';  // Host do banco de dados
-$dbname = 'u845457687_net_you_stream';  // Nome do banco de dados
-$username = 'u845457687_XTELL_777';  // Nome de usuário do banco de dados
-$password = 'Tubarao777';  // Senha do banco de dados
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erro de conexão: " . $e->getMessage());
-}
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+session_start();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Consulta SQL para verificar as credenciais
-    $sql = "SELECT * FROM users WHERE username = :username";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':username', $username);
-    $stmt->execute();
+    // Conectar ao banco de dados e validar usuário
+    $conn = new mysqli('localhost', 'user', 'password', 'u845457687_net_you_stream');
 
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // Verificar se o usuário existe e a senha está correta
-    if ($user && password_verify($password, $user['password'])) {
-        // Gerar um token de autenticação (opcional)
-        $token = bin2hex(random_bytes(16));  // Exemplo de geração de token
-        $updateToken = $pdo->prepare("UPDATE users SET token = :token WHERE username = :username");
-        $updateToken->bindParam(':token', $token);
-        $updateToken->bindParam(':username', $username);
-        $updateToken->execute();
-
-        // Salvar o ID do usuário e o token na sessão
-        $_SESSION['user_id'] = $user['id']; // Armazenando o ID do usuário na sessão
-        $_SESSION['token'] = $token;         // Armazenando o token na sessão
-
-        // Redirecionar para a página do canal após o login bem-sucedido
-        header("Location: https://www.netyoustream.com");
-        exit();
-    } else {
-        echo "Credenciais inválidas. Tente novamente.";
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
+
+    $sql = "SELECT * FROM users WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['username'] = $user['username'];
+            header("Location: dashboard.php");
+        } else {
+            echo "Senha incorreta!";
+        }
+    } else {
+        echo "Usuário não encontrado!";
+    }
+    $conn->close();
 }
-?>

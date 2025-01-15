@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrições - Net You Stream</title>
+    <!-- Vincular a biblioteca Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Vincular a biblioteca Material Design Icons -->
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+   
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px; /* Ajuste no espaçamento interno */
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            margin-right: 20px;
+            display: inline-flex; /* Alinhar ícone e texto em linha */
+            align-items: center; /* Alinhar verticalmente ao centro */
+        }
+
+        .fas,
+        .mdi {
+            margin-right: 5px; /* Espaçamento entre ícone e texto */
+        }
+
+        #subscriptions-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 5px 0px #ccc;
+        }
+
+        .subscription-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Alinhar verticalmente ao centro */
+        }
+
+        .channel-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .channel-info img {
+            width: 55px; /* Largura aumentada em 10% */
+            height: 55px; /* Altura aumentada em 10% */
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .subscription-details {
+            flex-grow: 1;
+        }
+
+        .subscription-details h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .subscription-details span {
+            margin: 5px 0;
+            color: #888;
+        }
+
+        .unsubscribe-button {
+            background-color: #c00;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 3px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .unsubscribe-button:hover {
+            background-color: #a00;
+        }
+
+        /* Responsividade */
+        @media screen and (max-width: 576px) {
+            .channel-info img {
+                width: 45px; /* Reduzir o tamanho para dispositivos menores */
+                height: 45px; /* Reduzir o tamanho para dispositivos menores */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Net You Stream</h1>
+    </header>
+
+    <nav>
+        <!-- Menu de navegação -->
+        <a href="index.html"><i class="fas fa-home"></i> Início</a>
+        <a class="vip" href="vip.html"><i class="fas fa-star"></i> VIP</a>
+        <a href="jogos.html"><i class="fas fa-gamepad"></i> Jogos</a>
+        <a href="musica.html"><i class="fas fa-music"></i> Música</a>
+        <a href="filmes.html"><i class="fas fa-film"></i> Filmes</a>
+        <a href="live.html"><i class="fas fa-broadcast-tower"></i> Live</a>
+        <a href="esporte.html"><i class="fas fa-football-ball"></i> Esporte</a>
+        <a href="podcast.html"><i class="fas fa-podcast"></i> Podcast</a>
+        <a href="noticias.html"><i class="fas fa-newspaper"></i> Notícias</a>
+    </nav>
+
+    <div id="subscriptions-container">
+        <h2>Suas Inscrições</h2>
+        <div class="subscription-card">
+            <div class="channel-info">
+                <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL777">
+                <div class="subscription-details">
+                    <h3 class="channel-name">XTELL777</h3>
+                    <span>1.234.567 inscritos</span>
+                    <span>Último vídeo há 2 dias</span>
+                </div>
+            </div>
+            <button class="unsubscribe-button" type="button" onclick="unsubscribe('XTELL777')">Cancelar Inscrição</button>
+        </div>
+        <!-- Repita o código acima para cada inscrição -->
+    </div>
+
+    <script>
+        // Uma função para cancelar a inscrição de um canal
+        function unsubscribe(channelName) {
+            // Enviar uma requisição ao servidor para remover o canal da lista de inscrições do usuário
+            // Mostrar uma mensagem de confirmação ao usuário
+            alert("Você cancelou a inscrição do canal " + channelName);
+            // Atualizar a página para remover o cartão do canal
+            location.reload();
+        }
+    </script>
+</body>
+</html>

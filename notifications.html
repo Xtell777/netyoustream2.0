@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificações - Net You Stream</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        #notification-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 5px 0px #ccc;
+        }
+
+        .notification {
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .notification-info {
+            display: flex;
+            align-items: center;
+        }
+
+       
+
+        .notification-text {
+            flex-grow: 1;
+            padding-right: 15px;
+        }
+
+        .notification-text p {
+            margin: 0;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .notification-text span {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .notification-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .mark-as-read {
+            margin-left: 10px;
+            padding: 8px 16px;
+            background-color: #eee;
+            color: #777;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .mark-as-read:hover {
+            background-color: #ddd;
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            color: #555;
+            background-color: #f9f9f9;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .pagination a.active {
+            background-color: #ff0000;
+            color: white;
+        }
+
+        .pagination a:hover {
+            background-color: #ddd;
+        }
+
+        /* Estilos para os botões de página anterior/próxima */
+        .pagination-button {
+            background-color: #ff0000;
+            border: none;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination-button:hover {
+            background-color: #cc0000;
+        }
+
+
+        /* Estilo para o menu de navegação */
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Estilo para os ícones */
+        .fas {
+            margin-right: 5px;
+        }
+
+        /* Estilo para o conteúdo principal */
+        main {
+            padding: 20px;
+        }
+
+   
+     nav {
+    background-color: #333; /* Cor de fundo */
+    padding: 10px; /* Espaçamento interno */
+}
+
+nav a {
+    color: #fff; /* Cor do texto */
+    text-decoration: none; /* Remover sublinhado dos links */
+    display: inline-block; /* Exibir os links em linha */
+    margin-right: 20px; /* Espaçamento entre os links */
+}
+
+nav a i {
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+}
+ .channel-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .channel-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .channel-name {
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+        }.channel-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.channel-info img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.channel-info p {
+    font-weight: bold;
+}
+
+            </style>
+</head>
+<body>
+    <header>
+        <h1>Net You Stream</h1>
+    </header>
+
+    <nav>
+        <!-- Menu de navegação -->
+        <a href="index.html"><i class="fas fa-home"></i> Início</a>
+        <a class="vip" href="vip.html"><i class="fas fa-star"></i> VIP</a>
+        <a href="jogos.html"><i class="fas fa-gamepad"></i> Jogos</a>
+        <a href="musica.html"><i class="fas fa-music"></i> Música</a>
+        <a href="filmes.html"><i class="fas fa-film"></i> Filmes</a>
+        <a href="live.html"><i class="fas fa-broadcast-tower"></i> Live</a>
+        <a href="esporte.html"><i class="fas fa-football-ball"></i> Esporte</a>
+        <a href="podcast.html"><i class="fas fa-podcast"></i> Podcast</a>
+        <a href="noticias.html"><i class="fas fa-newspaper"></i> Notícias</a>
+    </nav>
+        <div class="notification">
+            <div class="notification-info">
+                <div class="notification-thumbnail">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                </div>
+                <div class="notification-text">
+                    <p><i class="fas fa-video fa-lg"></i> Novo vídeo: "Como Fazer uma Torta de Maçã" foi adicionado por "CozinhaMaster"</p>
+                    <span class="time-ago">há 1 hora</span>
+                </div>
+            </div>
+            <div class="notification-actions">
+                <button class="mark-as-read">Marcar como lida</button>
+            </div>
+        </div>
+        
+        <div class="notification">
+            <div class="notification-info">
+                <div class="notification-thumbnail">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                </div>
+                <div class="notification-text">
+                    <p><i class="fas fa-comment fa-lg"></i> Novo comentário: "Ótima receita, vou tentar fazer em casa!" de "Usuario123" em "Como Fazer uma Torta de Maçã"</p>
+                    <span class="time-ago">há 30 minutos</span>
+                </div>
+            </div>
+            <div class="notification-actions">
+                <button class="mark-as-read">Marcar como lida</button>
+            </div>
+        </div>
+        
+        <div class="notification">
+            <div class="notification-info">
+                <div class="notification-thumbnail">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                </div>
+                <div class="notification-text">
+                    <p><i class="fas fa-reply fa-lg"></i> Resposta em comentário: "Obrigado pelo feedback!" de "CozinhaMaster" para "Usuario123"</p>
+                    <span class="time-ago">há 10 minutos</span>
+                </div>
+            </div>
+            <div class="notification-actions">
+                <button class="mark-as-read">Marcar como lida</button>
+            </div>
+        </div>
+        
+        <div class="notification">
+            <div class="notification-info">
+                <div class="notification-thumbnail">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                </div>
+                <div class="notification-text">
+                    <p><i class="fas fa-exclamation-triangle fa-lg"></i> Alerta: O sistema de comentários estará em manutenção hoje às 20:00.</p>
+                    <span class="time-ago">há 2 horas</span>
+                </div>
+            </div>
+            <div class="notification-actions">
+                <button class="mark-as-read">Marcar como lida</button>
+            </div>
+        </div>
+
+        
+        <!-- Adicione mais notificações conforme necessário -->
+        
+    </div>
+
+    <script>
+        <script>
+    // Função para marcar uma notificação como lida
+    function markAsRead(button) {
+        // Encontrar o elemento pai da notificação
+        var notification = button.closest('.notification');
+        
+        // Adicionar a classe 'read' à notificação
+        notification.classList.add('read');
+    }
+
+    // Adicionar evento de clique aos botões de "Marcar como lida"
+    var markButtons = document.querySelectorAll('.mark-as-read');
+    markButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            markAsRead(this);
+        });
+    });
+
+    // Função para exibir a hora de forma legível
+    function timeAgo(date) {
+        var seconds = Math.floor((new Date() - date) / 1000);
+
+        var interval = Math.floor(seconds / 31536000);
+
+        if (interval > 1) {
+            return interval + " anos atrás";
+        }
+        interval = Math.floor(seconds / 2592000);
+        if (interval > 1) {
+            return interval + " meses atrás";
+        }
+        interval = Math.floor(seconds / 86400);
+        if (interval > 1) {
+            return interval + " dias atrás";
+        }
+        interval = Math.floor(seconds / 3600);
+        if (interval > 1) {
+            return interval + " horas atrás";
+        }
+        interval = Math.floor(seconds / 60);
+        if (interval > 1) {
+            return interval + " minutos atrás";
+        }
+        return Math.floor(seconds) + " segundos atrás";
+    }
+
+    // Converter os timestamps em strings legíveis
+    var timeAgoElements = document.querySelectorAll('.time-ago');
+    timeAgoElements.forEach(function(element) {
+        var timestamp = new Date(element.getAttribute('data-timestamp'));
+        element.innerText = timeAgo(timestamp);
+    });
+
+    // Função para inscrever-se em um canal
+    function subscribeChannel(button) {
+        // Encontrar o elemento pai da notificação
+        var channelInfo = button.closest('.channel-info');
+        
+        // Alterar o texto do botão
+        var buttonText = channelInfo.querySelector('.subscribe-button span');
+        if (buttonText.innerText === 'Inscreva-se') {
+            buttonText.innerText = 'Inscrito';
+        } else {
+            buttonText.innerText = 'Inscreva-se';
+        }
+
+        // Adicionar ou remover a classe 'subscribed' ao elemento pai da notificação
+        channelInfo.classList.toggle('subscribed');
+    }
+
+    // Adicionar evento de clique aos botões de inscrição
+    var subscribeButtons = document.querySelectorAll('.subscribe-button');
+    subscribeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            subscribeChannel(this);
+        });
+    });
+</script>
+
+    </script>
+</body>
+</html>
+
+

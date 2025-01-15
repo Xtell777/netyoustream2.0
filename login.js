@@ -1,34 +1,22 @@
-<script>
-    async function handleLogin(event) {
-        event.preventDefault(); 
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const errorMessage = document.getElementById('error-message');
-        errorMessage.textContent = "";
+document.getElementById("login-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
-        try {
-            const response = await fetch("http://www.netyoustream.com/login_api.php", {  // URL do script PHP para autenticação
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username: username, password: password })
-            });
-
-            const data = await response.json();
-
-            if (response.ok && data.token) {  // Verifica se há um token na resposta
-                localStorage.setItem("token", data.token);
-                localStorage.setItem("username", username);
-                window.location.href = "homepage.html";  // Redireciona para a página principal após login bem-sucedido
-            } else {
-                errorMessage.textContent = data.message || "Erro ao fazer login. Verifique suas credenciais.";
-            }
-        } catch (error) {
-            // Exibe a mensagem de erro mais detalhada
-            if (error instanceof TypeError) {
-                errorMessage.textContent = "Erro de conexão. Verifique sua internet ou tente novamente mais tarde.";
-            } else {
-                errorMessage.textContent = "Erro inesperado. Tente novamente.";
-            }
+    // Envia as credenciais ao backend para validação
+    fetch('https://netyoustream.com/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Redireciona para a página inicial ou dashboard
+            window.location.href = 'home.html';
+        } else {
+            alert("Credenciais inválidas");
         }
-    }
-</script>
+    })
+    .catch(error => console.error('Erro:', error));
+});

@@ -1,0 +1,3 @@
+<FilesMatch "\.(html|htm|js|css)$">
+  Header set X-Content-Type-Options nosniff
+</FilesMatch>

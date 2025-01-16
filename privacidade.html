@@ -1,236 +1,41 @@
-
-
-
-
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidade - NET YOU STREAM</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Adicione seus estilos personalizados, se necessário -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exibir HTML Oculto</title>
+  <link rel="stylesheet" href="Index.css">
 </head>
-
 <body>
-    <header>
-        <h1>NET YOU STREAM</h1>
-    </header>
+  <div class="container" id="content"></div>
 
-    <nav>
-        <!-- Adicione links de navegação, se necessário -->
-    </nav>
+  <script>
+    // Código Base64 do seu HTML
+    const base64Html = 'CgoKCjwhRE9DVFlQRSBodG1sPgo8aHRtbCBsYW5nPSJwdC1CUiI+Cgo8aGVhZD4KICAgIDxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KICAgIDxtZXRhIG5hbWU9InZpZXdwb3J0IiBjb250ZW50PSJ3aWR0aD1kZXZpY2Utd2lkdGgsIGluaXRpYWwtc2NhbGU9MS4wIj4KICAgIDx0aXRsZT5Qb2zDrXRpY2EgZGUgUHJpdmFjaWRhZGUgLSBORVQgWU9VIFNUUkVBTTwvdGl0bGU+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9InN0eWxlLmNzcyI+CiAgICA8IS0tIEFkaWNpb25lIHNldXMgZXN0aWxvcyBwZXJzb25hbGl6YWRvcywgc2UgbmVjZXNzw6FyaW8gLS0+CjwvaGVhZD4KCjxib2R5PgogICAgPGhlYWRlcj4KICAgICAgICA8aDE+TkVUIFlPVSBTVFJFQU08L2gxPgogICAgPC9oZWFkZXI+CgogICAgPG5hdj4KICAgICAgICA8IS0tIEFkaWNpb25lIGxpbmtzIGRlIG5hdmVnYcOnw6NvLCBzZSBuZWNlc3PDoXJpbyAtLT4KICAgIDwvbmF2PgoKICAgIDxtYWluPgogICAgICAgIDxzZWN0aW9uIGNsYXNzPSJwcml2YWN5LXNlY3Rpb24iPgogICAgICAgICAgICA8aDI+UG9sw610aWNhIGRlIFByaXZhY2lkYWRlIC0gTkVUIFlPVSBTVFJFQU08L2gyPgogICAgICAgICAgICAKICAgICAgICAgICAgPHA+U2VqYSBiZW0tdmluZG8gw6AgUG9sw610aWNhIGRlIFByaXZhY2lkYWRlIGRvIE5FVCBZT1UgU1RSRUFNLiBFc3RhIHBvbMOtdGljYSBkZXNjcmV2ZSBjb21vIGNvbGV0YW1vcywgdXNhbW9zIGUgcHJvdGVnZW1vcyBzdWFzIGluZm9ybWHDp8O1ZXMgYW8gdXRpbGl6YXIgbm9zc29zIHNlcnZpw6dvcy48L3A+CgogICAgICAgICAgICA8aDM+SW5mb3JtYcOnw7VlcyBDb2xldGFkYXM6PC9oMz4KICAgICAgICAgICAgPHVsPgogICAgICAgICAgICAgICAgPGxpPkNvbGV0YW1vcyBpbmZvcm1hw6fDtWVzIHBlc3NvYWlzLCBjb21vIG5vbWUsIGUtbWFpbCBlIGRhZG9zIGRlIHBlcmZpbCwgZHVyYW50ZSBvIHJlZ2lzdHJvLjwvbGk+CiAgICAgICAgICAgICAgICA8bGk+UG9kZW1vcyB0YW1iw6ltIGNvbGV0YXIgZGFkb3MgZGUgbmF2ZWdhw6fDo28gZSBpbnRlcmHDp8OjbyBwYXJhIG1lbGhvcmFyIG5vc3NvcyBzZXJ2acOnb3MuPC9saT4KICAgICAgICAgICAgPC91bD4KCiAgICAgICAgICAgIDxoMz5Vc28gZGUgSW5mb3JtYcOnw7Vlczo8L2gzPgogICAgICAgICAgICA8dWw+CiAgICAgICAgICAgICAgICA8bGk+VXRpbGl6YW1vcyBzdWFzIGluZm9ybWHDp8O1ZXMgcGFyYSBwZXJzb25hbGl6YXIgc3VhIGV4cGVyacOqbmNpYSBubyBORVQgWU9VIFNUUkVBTSBlIG9mZXJlY2VyIGNvbnRlw7pkbyByZWxldmFudGUuPC9saT4KICAgICAgICAgICAgICAgIDxsaT5Ow6NvIGNvbXBhcnRpbGhhbW9zIHN1YXMgaW5mb3JtYcOnw7VlcyBwZXNzb2FpcyBjb20gdGVyY2Vpcm9zIHNlbSBzZXUgY29uc2VudGltZW50bywgZXhjZXRvIHF1YW5kbyBuZWNlc3PDoXJpbyBwb3IgbGVpLjwvbGk+CiAgICAgICAgICAgIDwvdWw+CgogICAgICAgICAgICA8aDM+Q29va2llcyBlIFRlY25vbG9naWFzIFNlbWVsaGFudGVzOjwvaDM+CiAgICAgICAgICAgIDx1bD4KICAgICAgICAgICAgICAgIDxsaT5VdGlsaXphbW9zIGNvb2tpZXMgcGFyYSBtZWxob3JhciBhIGZ1bmNpb25hbGlkYWRlIGRvIHNpdGUuIFZvY8OqIHBvZGUgb3B0YXIgcG9yIGRlc2F0aXZhciBvcyBjb29raWVzIG5hcyBjb25maWd1cmHDp8O1ZXMgZG8gbmF2ZWdhZG9yLjwvbGk+CiAgICAgICAgICAgIDwvdWw+CgogICAgICAgICAgICA8aDM+U2VndXJhbsOnYTo8L2gzPgogICAgICAgICAgICA8dWw+CiAgICAgICAgICAgICAgICA8bGk+SW1wbGVtZW50YW1vcyBtZWRpZGFzIGRlIHNlZ3VyYW7Dp2EgcGFyYSBwcm90ZWdlciBzdWFzIGluZm9ybWHDp8O1ZXMgY29udHJhIGFjZXNzbyBuw6NvIGF1dG9yaXphZG8gb3UgZGl2dWxnYcOnw6NvLjwvbGk+CiAgICAgICAgICAgIDwvdWw+CgogICAgICAgICAgICA8aDM+TWVub3JlcyBkZSBJZGFkZTo8L2gzPgogICAgICAgICAgICA8dWw+CiAgICAgICAgICAgICAgICA8bGk+TyBORVQgWU9VIFNUUkVBTSBuw6NvIMOpIGRlc3RpbmFkbyBhIG1lbm9yZXMgZGUgMTMgYW5vcy4gTsOjbyBjb2xldGFtb3MgaW50ZW5jaW9uYWxtZW50ZSBpbmZvcm1hw6fDtWVzIGRlIGNyaWFuw6dhcyBtZW5vcmVzIGRlc3NhIGlkYWRlLjwvbGk+CiAgICAgICAgICAgIDwvdWw+CgogICAgICAgICAgICA8aDM+QWx0ZXJhw6fDtWVzIG5hIFBvbMOtdGljYSBkZSBQcml2YWNpZGFkZTo8L2gzPgogICAgICAgICAgICA8dWw+CiAgICAgICAgICAgICAgICA8bGk+UmVzZXJ2YW1vLW5vcyBvIGRpcmVpdG8gZGUgYXR1YWxpemFyIGVzdGEgcG9sw610aWNhLiBSZWNvbWVuZGFtb3MgcmV2aXNhciBwZXJpb2RpY2FtZW50ZSBwYXJhIGVzdGFyIGNpZW50ZSBkZSBxdWFpc3F1ZXIgYWx0ZXJhw6fDtWVzLjwvbGk+CiAgICAgICAgICAgIDwvdWw+CgogICAgICAgICAgICA8cD5BbyB1dGlsaXphciBvIE5FVCBZT1UgU1RSRUFNLCB2b2PDqiBjb25jb3JkYSBjb20gZXN0YSBQb2zDrXRpY2EgZGUgUHJpdmFjaWRhZGUuIFNlIHRpdmVyIGTDunZpZGFzIG91IHByZW9jdXBhw6fDtWVzLCBlbnRyZSBlbSBjb250YXRvIGNvbm9zY28uPC9wPgogICAgICAgIDwvc2VjdGlvbj4KICAgIDwvbWFpbj4gCgoKPCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InB0LUJSIj4KCjxoZWFkPgogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiPgogICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiPgogICAgPHRpdGxlPlBvbMOtdGljYSBkZSBSZXRpcmFkYSBkZSBDb250ZcO6ZG8gLSBORVQgWU9VIFNUUkVBTTwvdGl0bGU+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9InN0eWxlLmNzcyI+CiAgICA8IS0tIEFkaWNpb25lIHNldXMgZXN0aWxvcyBwZXJzb25hbGl6YWRvcywgc2UgbmVjZXNzw6FyaW8gLS0+CjwvaGVhZD4KCjxib2R5PgogICAgPGhlYWRlcj4KICAgICAgICA8aDE+TkVUIFlPVSBTVFJFQU08L2gxPgogICAgPC9oZWFkZXI+CgogICAgPG5hdj4KICAgICAgICA8IS0tIEFkaWNpb25lIGxpbmtzIGRlIG5hdmVnYcOnw6NvLCBzZSBuZWNlc3PDoXJpbyAtLT4KICAgIDwvbmF2PgoKICAgIDxtYWluPgogICAgICAgIDxzZWN0aW9uIGNsYXNzPSJwb2xpY3ktc2VjdGlvbiI+CiAgICAgICAgICAgIDxoMj5Qb2zDrXRpY2EgZGUgUmV0aXJhZGEgZGUgQ29udGXDumRvIC0gTkVUIFlPVSBTVFJFQU08L2gyPgogICAgICAgICAgICAKICAgICAgICAgICAgPHA+QSBQb2zDrXRpY2EgZGUgUmV0aXJhZGEgZGUgQ29udGXDumRvIGRvIE5FVCBZT1UgU1RSRUFNIHRlbSBjb21vIG9iamV0aXZvIGFzc2VndXJhciBxdWUgbm9zc28gYW1iaWVudGUgZGlnaXRhbCBwZXJtYW5lw6dhIHNlZ3Vybywgw6l0aWNvIGUgZW0gY29uZm9ybWlkYWRlIGNvbSBhcyBsZWlzLiBBbyB1dGlsaXphciBub3Nzb3Mgc2VydmnDp29zLCDDqSBmdW5kYW1lbnRhbCBjb21wcmVlbmRlciBlIGFkZXJpciDDoHMgc2VndWludGVzIGRpcmV0cml6ZXM6PC9wPgoKICAgICAgICAgICAgPG9sPgogICAgICAgICAgICAgICAgPGxpPjxzdHJvbmc+VmlvbGHDp8OjbyBkYXMgUG9sw610aWNhczo8L3N0cm9uZz4gQ29udGXDumRvcyBxdWUgdmlvbGVtIG5vc3NvcyBUZXJtb3MgZGUgVXNvLCBUZXJtbyBkZSBTZXJ2acOnbywgUG9sw610aWNhIGRlIFByaXZhY2lkYWRlIG91IERpcmVpdG9zIEF1dG9yYWlzIHBvZGVtIHNlciBzdWplaXRvcyDDoCByZW1vw6fDo28uPC9saT4KICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgPGxpPjxzdHJvbmc+Tm90aWZpY2HDp8OjbyBkZSBWaW9sYcOnw6NvOjwvc3Ryb25nPiBDYXNvIGlkZW50aWZpcXVlIG91IGFjcmVkaXRlIHF1ZSBkZXRlcm1pbmFkbyBjb250ZcO6ZG8gdmlvbGEgbm9zc2FzIHBvbMOtdGljYXMsIHBvciBmYXZvciwgbm9zIG5vdGlmaXF1ZS4gUHJvdmUgaW5mb3JtYcOnw7VlcyBkZXRhbGhhZGFzIHNvYnJlIGEgc3Vwb3N0YSB2aW9sYcOnw6NvLjwvbGk+CiAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgIDxsaT48c3Ryb25nPkFuw6FsaXNlIGUgQXZhbGlhw6fDo286PC9zdHJvbmc+IE5vc3NhIGVxdWlwZSBhbmFsaXNhcsOhIGFzIG5vdGlmaWNhw6fDtWVzIHJlY2ViaWRhcyBwYXJhIGRldGVybWluYXIgc2UgbyBjb250ZcO6ZG8gZW0gcXVlc3TDo28gcmVhbG1lbnRlIHZpb2xhIG5vc3NhcyBwb2zDrXRpY2FzLjwvbGk+CiAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgIDxsaT48c3Ryb25nPkNvbXVuaWNhw6fDo28gY29tIG8gQ3JpYWRvciBkZSBDb250ZcO6ZG86PC9zdHJvbmc+IFNlIGlkZW50aWZpY2FkYSB1bWEgdmlvbGHDp8OjbywgZW50cmFyZW1vcyBlbSBjb250YXRvIGNvbSBvIGNyaWFkb3IgZGUgY29udGXDumRvIHBhcmEgb2ZlcmVjZXIgb3BvcnR1bmlkYWRlIGRlIGVzY2xhcmVjaW1lbnRvIGUgcmVzb2x1w6fDo28gZGEgcXVlc3TDo28uPC9saT4KICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgPGxpPjxzdHJvbmc+UmVtb8Onw6NvIG91IEFqdXN0ZXM6PC9zdHJvbmc+IEVtIGNhc29zIGNvbmZpcm1hZG9zIGRlIHZpb2xhw6fDo28sIG8gY29udGXDumRvIHNlcsOhIHJlbW92aWRvIG91IGFqdXN0YWRvIGNvbmZvcm1lIG5lY2Vzc8OhcmlvIHBhcmEgZ2FyYW50aXIgY29uZm9ybWlkYWRlIGNvbSBub3NzYXMgcG9sw610aWNhcy48L2xpPgogICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICA8bGk+PHN0cm9uZz5SZXZpc8OjbyBlIFJlY3Vyc286PC9zdHJvbmc+IE9zIGNyaWFkb3JlcyBkZSBjb250ZcO6ZG8gdMOqbSBvIGRpcmVpdG8gZGUgc29saWNpdGFyIHJldmlzw6NvIGRhIGRlY2lzw6NvIGRlIHJldGlyYWRhLiBBbmFsaXNhcmVtb3MgYXMgaW5mb3JtYcOnw7VlcyBmb3JuZWNpZGFzIGUgYWp1c3RhcmVtb3Mgbm9zc2EgZGVjaXPDo28sIHNlIGFwcm9wcmlhZG8uPC9saT4KICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgPGxpPjxzdHJvbmc+UmVpbmNpZMOqbmNpYSBlIE1lZGlkYXMgQWRpY2lvbmFpczo8L3N0cm9uZz4gQ2Fzb3MgZGUgcmVpbmNpZMOqbmNpYSBvdSB2aW9sYcOnw7VlcyBncmF2ZXMgcG9kZW0gcmVzdWx0YXIgZW0gbWVkaWRhcyBhZGljaW9uYWlzLCBpbmNsdWluZG8gYSBzdXNwZW5zw6NvIGRlIGNvbnRhLjwvbGk+CiAgICAgICAgICAgIDwvb2w+CgogICAgICAgICAgICA8cD5BbyB1dGlsaXphciBvIE5FVCBZT1UgU1RSRUFNLCB2b2PDqiBjb25jb3JkYSBlbSByZXNwZWl0YXIgbm9zc2EgUG9sw610aWNhIGRlIFJldGlyYWRhIGRlIENvbnRlw7pkby4gRXN0YW1vcyBjb21wcm9tZXRpZG9zIGVtIG1hbnRlciB1bSBhbWJpZW50ZSBvbmxpbmUgc2VndXJvLCByZXNwZWl0b3NvIGUgZW0gY29uZm9ybWlkYWRlIGNvbSBhcyBub3JtYXMgw6l0aWNhcyBlIGxlZ2Fpcy4gU2UgcHJlY2lzYXIgcmVsYXRhciB1bWEgdmlvbGHDp8OjbyBvdSB0aXZlciBkw7p2aWRhcywgZW50cmUgZW0gY29udGF0byBjb25vc2NvLjwvcD4KICAgICAgICA8L3NlY3Rpb24+CiAgICA8L21haW4+CgogICAgCjwvYm9keT4KCjwvaHRtbD4KCjwhRE9DVFlQRSBodG1sPgo8aHRtbCBsYW5nPSJwdC1CUiI+Cgo8aGVhZD4KICAgIDxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KICAgIDxtZXRhIG5hbWU9InZpZXdwb3J0IiBjb250ZW50PSJ3aWR0aD1kZXZpY2Utd2lkdGgsIGluaXRpYWwtc2NhbGU9MS4wIj4KICAgIDx0aXRsZT5EaXJlaXRvcyBBdXRvcmFpcyBlIFByb3ByaWVkYWRlIEludGVsZWN0dWFsIC0gTkVUIFlPVSBTVFJFQU08L3RpdGxlPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJzdHlsZS5jc3MiPgogICAgPCEtLSBBZGljaW9uZSBzZXVzIGVzdGlsb3MgcGVyc29uYWxpemFkb3MsIHNlIG5lY2Vzc8OhcmlvIC0tPgo8L2hlYWQ+Cgo8Ym9keT4KICAgIDxoZWFkZXI+CiAgICAgICAgPGgxPk5FVCBZT1UgU1RSRUFNPC9oMT4KICAgIDwvaGVhZGVyPgoKICAgIDxuYXY+CiAgICAgICAgPCEtLSBBZGljaW9uZSBsaW5rcyBkZSBuYXZlZ2HDp8Ojbywgc2UgbmVjZXNzw6FyaW8gLS0+CiAgICA8L25hdj4KCiAgICA8bWFpbj4KICAgICAgICA8c2VjdGlvbiBjbGFzcz0iY29weXJpZ2h0LXNlY3Rpb24iPgogICAgICAgICAgICA8aDI+RGlyZWl0b3MgQXV0b3JhaXMgZSBQcm9wcmllZGFkZSBJbnRlbGVjdHVhbCAtIE5FVCBZT1UgU1RSRUFNPC9oMj4KCiAgICAgICAgICAgIDxwPkJlbS12aW5kbyDDoHMgRGlyZXRyaXplcyBkZSBEaXJlaXRvcyBBdXRvcmFpcyBlIFByb3ByaWVkYWRlIEludGVsZWN0dWFsIGRvIE5FVCBZT1UgU1RSRUFNIC4gVmFsb3JpemFtb3MgYSBjcmlhw6fDo28gZSBvIHJlc3BlaXRvIHBlbG9zIGRpcmVpdG9zIGRvcyBjcmlhZG9yZXMgZGUgY29udGXDumRvLiBBbyB1dGlsaXphciBub3Nzb3Mgc2VydmnDp29zLCDDqSBjcnVjaWFsIG9ic2VydmFyIGFzIHNlZ3VpbnRlcyBkaXJldHJpemVzOjwvcD4KCiAgICAgICAgICAgIDxoMz4xLiBDb250ZcO6ZG8gT3JpZ2luYWw6PC9oMz4KICAgICAgICAgICAgPHVsPgogICAgICAgICAgICAgICAgPGxpPkNlcnRpZmlxdWUtc2UgZGUgcXVlIG8gY29udGXDumRvIHF1ZSB2b2PDqiBjb21wYXJ0aWxoYSBzZWphIG9yaWdpbmFsIGUgcXVlIHZvY8OqIHRlbmhhIG9zIGRpcmVpdG9zIG5lY2Vzc8OhcmlvcyBwYXJhIGRpc3RyaWJ1w60tbG8uPC9saT4KICAgICAgICAgICAgPC91bD4KCiAgICAgICAgICAgIDxoMz4yLiBSZXNwZWl0byBhb3MgRGlyZWl0b3MgQXV0b3JhaXM6PC9oMz4KICAgICAgICAgICAgPHVsPgogICAgICAgICAgICAgICAgPGxpPk7Do28gZmHDp2EgdXBsb2FkIGRlIGNvbnRlw7pkbyBxdWUgdmlvbGUgb3MgZGlyZWl0b3MgYXV0b3JhaXMgZGUgdGVyY2Vpcm9zLiBSZXNwZWl0ZSBhcyBsZWlzIGRlIGRpcmVpdG9zIGF1dG9yYWlzIGUgcHJvcHJpZWRhZGUgaW50ZWxlY3R1YWwuPC9saT4KICAgICAgICAgICAgPC91bD4KCiAgICAgICAgICAgIDxoMz4zLiBVc28gQWRlcXVhZG8gZGUgQ29udGXDumRvIGRlIFRlcmNlaXJvczo8L2gzPgogICAgICAgICAgICA8dWw+CiAgICAgICAgICAgICAgICA8bGk+U2UgdXRpbGl6YXIgbWF0ZXJpYWwgZGUgdGVyY2Vpcm9zLCBvYnRlbmhhIGFzIHBlcm1pc3PDtWVzIGFkZXF1YWRhcyBlIGTDqiBjcsOpZGl0b3MgYXByb3ByaWFkb3MsIHF1YW5kbyBuZWNlc3PDoXJpby48L2xpPgogICAgICAgICAgICA8L3VsPgoKICAgICAgICAgICAgPGgzPjQuIFBvbMOtdGljYSBkZSBSZXRpcmFkYSBkZSBDb250ZcO6ZG86PC9oMz4KICAgICAgICAgICAgPHVsPgogICAgICAgICAgICAgICAgPGxpPlJlc2VydmFtby1ub3MgbyBkaXJlaXRvIGRlIHJlbW92ZXIgcXVhbHF1ZXIgY29udGXDumRvIHF1ZSB2aW9sZSBhcyBsZWlzIGRlIGRpcmVpdG9zIGF1dG9yYWlzIG91IHByb3ByaWVkYWRlIGludGVsZWN0dWFsLCBkZSBhY29yZG8gY29tIG5vc3NhIHBvbMOtdGljYSBkZSByZXRpcmFkYS48L2xpPgogICAgICAgICAgICA8L3VsPgoKICAgICAgICAgICAgPGgzPjUuIE5vdGlmaWNhw6fDo28gZGUgSW5mcmHDp8Ojbzo8L2gzPgogICAgICAgICAgICA8dWw+CiAgICAgICAgICAgICAgICA8bGk+Q2FzbyBhY3JlZGl0ZSBxdWUgc2V1IHRyYWJhbGhvIGZvaSByZXByb2R1emlkbyBkZSBtYW5laXJhIHF1ZSBjb25zdGl0dWEgdmlvbGHDp8OjbyBkZSBkaXJlaXRvcyBhdXRvcmFpcywgZW50cmUgZW0gY29udGF0byBjb25vc2NvIHBhcmEgcXVlIHBvc3NhbW9zIHRvbWFyIGFzIG1lZGlkYXMgYXByb3ByaWFkYXMuPC9saT4KICAgICAgICAgICAgPC91bD4KCiAgICAgICAgICAgIDxoMz42LiBQcm90ZcOnw6NvIGRlIFByb3ByaWVkYWRlIEludGVsZWN0dWFsOjwvaDM+CiAgICAgICAgICAgIDx1bD4KICAgICAgICAgICAgICAgIDxsaT5FbmNvcmFqYW1vcyBhIGNyaWHDp8OjbywgaW5vdmHDp8OjbyBlIGV4cHJlc3PDo28gYXJ0w61zdGljYSwgbWFzIG7Do28gdG9sZXJhbW9zIGEgdmlvbGHDp8OjbyBkZSBkaXJlaXRvcyBhdXRvcmFpcyBvdSBwcm9wcmllZGFkZSBpbnRlbGVjdHVhbC48L2xpPgogICAgICAgICAgICA8L3VsPgoKICAgICAgICAgICAgPGgzPjcuIEFwcmltb3JhbWVudG8gQ29udMOtbnVvOjwvaDM+CiAgICAgICAgICAgIDx1bD4KICAgICAgICAgICAgICAgIDxsaT5SZXZpc2FyZW1vcyBlIGF0dWFsaXphcmVtb3MgcmVndWxhcm1lbnRlIG5vc3NhcyBwb2zDrXRpY2FzIHBhcmEgZ2FyYW50aXIgbyBjdW1wcmltZW50byBkb3MgbWFpcyBhbHRvcyBwYWRyw7VlcyDDqXRpY29zIGUgbGVnYWlzLjwvbGk+CiAgICAgICAgICAgIDwvdWw+CgogICAgICAgICAgICA8cD5BbyB1dGlsaXphciBvIE5FVCBZT1UgU1RSRUFNLCBjb21wcm9tZXRlLXNlIGEgc2VndWlyIGVzdGFzIGRpcmV0cml6ZXMuIFJlc2VydmFtby1ub3MgbyBkaXJlaXRvIGRlIHRvbWFyIG1lZGlkYXMsIGluY2x1aW5kbyBhIHJlbW/Dp8OjbyBkZSBjb250ZcO6ZG8gZSBhIHN1c3BlbnPDo28gZGUgY29udGFzLCBlbSBjYXNvcyBkZSB2aW9sYcOnw6NvIGdyYXZlIGRhcyBwb2zDrXRpY2FzIGRlIGRpcmVpdG9zIGF1dG9yYWlzIGUgcHJvcHJpZWRhZGUgaW50ZWxlY3R1YWwuIFNlIHRpdmVyIGTDunZpZGFzIG91IHByZW9jdXBhw6fDtWVzLCBlbnRyZSBlbSBjb250YXRvIGNvbm9zY28uPC9wPgogICAgICAgIDwvc2VjdGlvbj4KICAgIDwvbWFpbj4KCgoKICAgIDwvYm9keT4KPGJvZHk+Cgo8IS0tIEFkaWNpb25lIGVzc2FzIGNhaXhhcyBkZSBzZWxlw6fDo28gYXDDs3MgbyBwYXLDoWdyYWZvIHF1ZSBlbmNlcnJhIG9zIFRlcm1vcyBkZSBVc28gLS0+CjxwPgogICAgPGxhYmVsPgogICAgICAgIDxpbnB1dCB0eXBlPSJjaGVja2JveCIgaWQ9InRlcm1vc0NoZWNrYm94IiBvbmNsaWNrPSJjb25jb3JkYXJUZXJtb3MoKSI+IENvbmNvcmRvIGNvbSBhIHBvbMOtdGljYSBkZSBwcml2YWNpZGFkZQogICAgPC9sYWJlbD4KICAgIDxicj4KICAgIDxsYWJlbD4KICAgICAgICA8aW5wdXQgdHlwZT0iY2hlY2tib3giIGlkPSJwcml2YWNpZGFkZUNoZWNrYm94IiBvbmNsaWNrPSJjb25jb3JkYXJQcml2YWNpZGFkZSgpIj4gQ29uY29yZG8gY29tIG8gcHJvY2Vzc2FtZW50byBkb3MgbWV1cyBkYWRvcyBwZXNzb2FpcyBjb25mb3JtZSBkZXNjcml0byBhY2ltYSBlIG1lbGhvciBleHBsaWNhZG8gbmEgcG9sw610aWNhIGRlIHByaXZhY2lkYWRlCiAgICA8L2xhYmVsPgo8L3A+Cgo8c2NyaXB0PgogICAgZnVuY3Rpb24gY29uY29yZGFyVGVybW9zKCkgewogICAgICAgIC8vIEzDs2dpY2EgcGFyYSBsaWRhciBjb20gYSBjb25jb3Jkw6JuY2lhIGRvcyB0ZXJtb3MgZGUgc2VydmnDp28KICAgICAgICBpZiAoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3Rlcm1vc0NoZWNrYm94JykuY2hlY2tlZCkgewogICAgICAgICAgICBhbGVydCgiVm9jw6ogY29uY29yZG91IGNvbSBhIHBvbMOtdGljYSBkZSBwcml2YWNpZGFkZSEiKTsKICAgICAgICAgICAgbG9jYWxTdG9yYWdlLnNldEl0ZW0oJ2NvbmNvcmRvdVRlcm1vcycsICd0cnVlJyk7CiAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgbG9jYWxTdG9yYWdlLnJlbW92ZUl0ZW0oJ2NvbmNvcmRvdVRlcm1vcycpOwogICAgICAgIH0KICAgIH0KCiAgICBmdW5jdGlvbiBjb25jb3JkYXJQcml2YWNpZGFkZSgpIHsKICAgICAgICAvLyBMw7NnaWNhIHBhcmEgbGlkYXIgY29tIGEgY29uY29yZMOibmNpYSBkYSBwb2zDrXRpY2EgZGUgcHJpdmFjaWRhZGUKICAgICAgICBpZiAoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3ByaXZhY2lkYWRlQ2hlY2tib3gnKS5jaGVja2VkKSB7CiAgICAgICAgICAgIGFsZXJ0KCJWb2PDqiBjb25jb3Jkb3UgY29tIG8gcHJvY2Vzc2FtZW50byBkb3Mgc2V1cyBkYWRvcyBwZXNzb2FpcyBjb25mb3JtZSBkZXNjcml0byBhY2ltYSBlIG1lbGhvciBleHBsaWNhZG8gbmEgcG9sw610aWNhIGRlIHByaXZhY2lkYWRlISIpOwogICAgICAgICAgICBsb2NhbFN0b3JhZ2Uuc2V0SXRlbSgnY29uY29yZG91UHJpdmFjaWRhZGUnLCAndHJ1ZScpOwogICAgICAgIH0gZWxzZSB7CiAgICAgICAgICAgIGxvY2FsU3RvcmFnZS5yZW1vdmVJdGVtKCdjb25jb3Jkb3VQcml2YWNpZGFkZScpOwogICAgICAgIH0KICAgIH0KCiAgICAvLyBWZXJpZmljYSBzZSBvIHVzdcOhcmlvIGrDoSBjb25jb3Jkb3UgYW50ZXJpb3JtZW50ZQogICAgd2luZG93Lm9ubG9hZCA9IGZ1bmN0aW9uKCkgewogICAgICAgIGlmIChsb2NhbFN0b3JhZ2UuZ2V0SXRlbSgnY29uY29yZG91VGVybW9zJykgPT09ICd0cnVlJykgewogICAgICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgndGVybW9zQ2hlY2tib3gnKS5jaGVja2VkID0gdHJ1ZTsKICAgICAgICB9CiAgICAgICAgaWYgKGxvY2FsU3RvcmFnZS5nZXRJdGVtKCdjb25jb3Jkb3VQcml2YWNpZGFkZScpID09PSAndHJ1ZScpIHsKICAgICAgICAgICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3ByaXZhY2lkYWRlQ2hlY2tib3gnKS5jaGVja2VkID0gdHJ1ZTsKICAgICAgICB9CiAgICB9Cjwvc2NyaXB0PgoKPC9ib2R5PgoKCgo8L2h0bWw+';
 
-    <main>
-        <section class="privacy-section">
-            <h2>Política de Privacidade - NET YOU STREAM</h2>
-            
-            <p>Seja bem-vindo à Política de Privacidade do NET YOU STREAM. Esta política descreve como coletamos, usamos e protegemos suas informações ao utilizar nossos serviços.</p>
+    // Função para decodificar Base64 e exibir o HTML
+    function displayHtmlFromBase64(base64) {
+      try {
+        const htmlDecoded = decodeURIComponent(escape(atob(base64)));
+        document.getElementById('content').innerHTML = htmlDecoded;
+      } catch (error) {
+        console.error('Erro ao decodificar Base64:', error);
+      }
+    }
 
-            <h3>Informações Coletadas:</h3>
-            <ul>
-                <li>Coletamos informações pessoais, como nome, e-mail e dados de perfil, durante o registro.</li>
-                <li>Podemos também coletar dados de navegação e interação para melhorar nossos serviços.</li>
-            </ul>
+    // Função para adicionar o JavaScript externo
+    function addExternalJS(jsFile) {
+      const script = document.createElement('script');
+      script.src = jsFile;
+      script.defer = true; // Garante que o JS seja carregado após o HTML
+      document.body.appendChild(script);
+    }
 
-            <h3>Uso de Informações:</h3>
-            <ul>
-                <li>Utilizamos suas informações para personalizar sua experiência no NET YOU STREAM e oferecer conteúdo relevante.</li>
-                <li>Não compartilhamos suas informações pessoais com terceiros sem seu consentimento, exceto quando necessário por lei.</li>
-            </ul>
+    // Chamar a função para exibir o HTML
+    displayHtmlFromBase64(base64Html);
 
-            <h3>Cookies e Tecnologias Semelhantes:</h3>
-            <ul>
-                <li>Utilizamos cookies para melhorar a funcionalidade do site. Você pode optar por desativar os cookies nas configurações do navegador.</li>
-            </ul>
-
-            <h3>Segurança:</h3>
-            <ul>
-                <li>Implementamos medidas de segurança para proteger suas informações contra acesso não autorizado ou divulgação.</li>
-            </ul>
-
-            <h3>Menores de Idade:</h3>
-            <ul>
-                <li>O NET YOU STREAM não é destinado a menores de 13 anos. Não coletamos intencionalmente informações de crianças menores dessa idade.</li>
-            </ul>
-
-            <h3>Alterações na Política de Privacidade:</h3>
-            <ul>
-                <li>Reservamo-nos o direito de atualizar esta política. Recomendamos revisar periodicamente para estar ciente de quaisquer alterações.</li>
-            </ul>
-
-            <p>Ao utilizar o NET YOU STREAM, você concorda com esta Política de Privacidade. Se tiver dúvidas ou preocupações, entre em contato conosco.</p>
-        </section>
-    </main> 
-
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Retirada de Conteúdo - NET YOU STREAM</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Adicione seus estilos personalizados, se necessário -->
-</head>
-
-<body>
-    <header>
-        <h1>NET YOU STREAM</h1>
-    </header>
-
-    <nav>
-        <!-- Adicione links de navegação, se necessário -->
-    </nav>
-
-    <main>
-        <section class="policy-section">
-            <h2>Política de Retirada de Conteúdo - NET YOU STREAM</h2>
-            
-            <p>A Política de Retirada de Conteúdo do NET YOU STREAM tem como objetivo assegurar que nosso ambiente digital permaneça seguro, ético e em conformidade com as leis. Ao utilizar nossos serviços, é fundamental compreender e aderir às seguintes diretrizes:</p>
-
-            <ol>
-                <li><strong>Violação das Políticas:</strong> Conteúdos que violem nossos Termos de Uso, Termo de Serviço, Política de Privacidade ou Direitos Autorais podem ser sujeitos à remoção.</li>
-                
-                <li><strong>Notificação de Violação:</strong> Caso identifique ou acredite que determinado conteúdo viola nossas políticas, por favor, nos notifique. Prove informações detalhadas sobre a suposta violação.</li>
-                
-                <li><strong>Análise e Avaliação:</strong> Nossa equipe analisará as notificações recebidas para determinar se o conteúdo em questão realmente viola nossas políticas.</li>
-                
-                <li><strong>Comunicação com o Criador de Conteúdo:</strong> Se identificada uma violação, entraremos em contato com o criador de conteúdo para oferecer oportunidade de esclarecimento e resolução da questão.</li>
-                
-                <li><strong>Remoção ou Ajustes:</strong> Em casos confirmados de violação, o conteúdo será removido ou ajustado conforme necessário para garantir conformidade com nossas políticas.</li>
-                
-                <li><strong>Revisão e Recurso:</strong> Os criadores de conteúdo têm o direito de solicitar revisão da decisão de retirada. Analisaremos as informações fornecidas e ajustaremos nossa decisão, se apropriado.</li>
-                
-                <li><strong>Reincidência e Medidas Adicionais:</strong> Casos de reincidência ou violações graves podem resultar em medidas adicionais, incluindo a suspensão de conta.</li>
-            </ol>
-
-            <p>Ao utilizar o NET YOU STREAM, você concorda em respeitar nossa Política de Retirada de Conteúdo. Estamos comprometidos em manter um ambiente online seguro, respeitoso e em conformidade com as normas éticas e legais. Se precisar relatar uma violação ou tiver dúvidas, entre em contato conosco.</p>
-        </section>
-    </main>
-
-    
+    // Chamar a função para adicionar o JavaScript externo
+    addExternalJS('Index.js');
+  </script>
 </body>
-
-</html>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Direitos Autorais e Propriedade Intelectual - NET YOU STREAM</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Adicione seus estilos personalizados, se necessário -->
-</head>
-
-<body>
-    <header>
-        <h1>NET YOU STREAM</h1>
-    </header>
-
-    <nav>
-        <!-- Adicione links de navegação, se necessário -->
-    </nav>
-
-    <main>
-        <section class="copyright-section">
-            <h2>Direitos Autorais e Propriedade Intelectual - NET YOU STREAM</h2>
-
-            <p>Bem-vindo às Diretrizes de Direitos Autorais e Propriedade Intelectual do NET YOU STREAM . Valorizamos a criação e o respeito pelos direitos dos criadores de conteúdo. Ao utilizar nossos serviços, é crucial observar as seguintes diretrizes:</p>
-
-            <h3>1. Conteúdo Original:</h3>
-            <ul>
-                <li>Certifique-se de que o conteúdo que você compartilha seja original e que você tenha os direitos necessários para distribuí-lo.</li>
-            </ul>
-
-            <h3>2. Respeito aos Direitos Autorais:</h3>
-            <ul>
-                <li>Não faça upload de conteúdo que viole os direitos autorais de terceiros. Respeite as leis de direitos autorais e propriedade intelectual.</li>
-            </ul>
-
-            <h3>3. Uso Adequado de Conteúdo de Terceiros:</h3>
-            <ul>
-                <li>Se utilizar material de terceiros, obtenha as permissões adequadas e dê créditos apropriados, quando necessário.</li>
-            </ul>
-
-            <h3>4. Política de Retirada de Conteúdo:</h3>
-            <ul>
-                <li>Reservamo-nos o direito de remover qualquer conteúdo que viole as leis de direitos autorais ou propriedade intelectual, de acordo com nossa política de retirada.</li>
-            </ul>
-
-            <h3>5. Notificação de Infração:</h3>
-            <ul>
-                <li>Caso acredite que seu trabalho foi reproduzido de maneira que constitua violação de direitos autorais, entre em contato conosco para que possamos tomar as medidas apropriadas.</li>
-            </ul>
-
-            <h3>6. Proteção de Propriedade Intelectual:</h3>
-            <ul>
-                <li>Encorajamos a criação, inovação e expressão artística, mas não toleramos a violação de direitos autorais ou propriedade intelectual.</li>
-            </ul>
-
-            <h3>7. Aprimoramento Contínuo:</h3>
-            <ul>
-                <li>Revisaremos e atualizaremos regularmente nossas políticas para garantir o cumprimento dos mais altos padrões éticos e legais.</li>
-            </ul>
-
-            <p>Ao utilizar o NET YOU STREAM, compromete-se a seguir estas diretrizes. Reservamo-nos o direito de tomar medidas, incluindo a remoção de conteúdo e a suspensão de contas, em casos de violação grave das políticas de direitos autorais e propriedade intelectual. Se tiver dúvidas ou preocupações, entre em contato conosco.</p>
-        </section>
-    </main>
-
-
-
-    </body>
-<body>
-
-<!-- Adicione essas caixas de seleção após o parágrafo que encerra os Termos de Uso -->
-<p>
-    <label>
-        <input type="checkbox" id="termosCheckbox" onclick="concordarTermos()"> Concordo com a política de privacidade
-    </label>
-    <br>
-    <label>
-        <input type="checkbox" id="privacidadeCheckbox" onclick="concordarPrivacidade()"> Concordo com o processamento dos meus dados pessoais conforme descrito acima e melhor explicado na política de privacidade
-    </label>
-</p>
-
-<script>
-    function concordarTermos() {
-        // Lógica para lidar com a concordância dos termos de serviço
-        if (document.getElementById('termosCheckbox').checked) {
-            alert("Você concordou com a política de privacidade!");
-            localStorage.setItem('concordouTermos', 'true');
-        } else {
-            localStorage.removeItem('concordouTermos');
-        }
-    }
-
-    function concordarPrivacidade() {
-        // Lógica para lidar com a concordância da política de privacidade
-        if (document.getElementById('privacidadeCheckbox').checked) {
-            alert("Você concordou com o processamento dos seus dados pessoais conforme descrito acima e melhor explicado na política de privacidade!");
-            localStorage.setItem('concordouPrivacidade', 'true');
-        } else {
-            localStorage.removeItem('concordouPrivacidade');
-        }
-    }
-
-    // Verifica se o usuário já concordou anteriormente
-    window.onload = function() {
-        if (localStorage.getItem('concordouTermos') === 'true') {
-            document.getElementById('termosCheckbox').checked = true;
-        }
-        if (localStorage.getItem('concordouPrivacidade') === 'true') {
-            document.getElementById('privacidadeCheckbox').checked = true;
-        }
-    }
-</script>
-
-</body>
-
-
-
 </html>
